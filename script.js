@@ -1,62 +1,73 @@
 const perguntas = [
     {
-    enunciado: "Assim que saiu da escola você se depara com um cachorro. O que você faz?",
-    alternativas: [
-    "ignora",
-    "faz carrinho no cachorro" 
-    ]
+        enunciado: "qual sua cor favorita?",
+        alternativas: [
+            { texto: "azul cereja!", pontuacao: 1 },
+            { texto: "verde cachorrao!", pontuacao: 2 }
+        ]
     },
     {
-    enunciado: " Depois, você vai para casa. Qual atitude você toma?",
-    alternativas: [
-    "ir para casa caminhando",
-    "ir para casa de onibus" 
-    ]
+        enunciado: "qual sua comida preferida?",
+        alternativas: [
+            { texto: "pao peidao.", pontuacao: 2 },
+            { texto: "feijao diarreia.", pontuacao: 1 }
+        ]
     },
     {
-    enunciado: " Vocẽ chega em casa e sua mãe já esta com o almoço pronto, o que vocễ vai comer ?",
-    alternativas: [
-    "arroz com feijão",
-    "feijão com arroz"
-    ]
+        enunciado: "qual seu trabalho?",
+        alternativas: [
+            { texto: "rodar bolcinha.", pontuacao: 2 },
+            { texto: "dama de luxo.", pontuacao: 1 }
+        ]
     },
     {
-    enunciado: "Apos almoçar o que você vai fazer?",
-    alternativas: [
-    "estudar",
-    "mecher no cell"
-    ]
-    
+        enunciado: "E agora?",
+        alternativas: [
+            { texto: "boyceta.", pontuacao: 1 },
+            { texto: "ciss.", pontuacao: 2 }
+        ]
     },
     {
-    enunciado: "Já esta de noite e você esta com muito sono, o que você faz?",
-    alternativas: [
-    "vou tomar banho para depois dormir",
-    "ir dormir sem tomar banho"
-    ]
+        enunciado: "vc defecou hoje?",
+        alternativas: [
+            { texto: "sim, duas vezes.", pontuacao: 1 },
+            { texto: "nao, apenas uma bufa.", pontuacao: 2 }
+        ]
     }
-    ];
-    let atual = 0;
-    let perguntaAtual;
-    const caixaPerguntas = document.getElementById('caixaPerguntas');
-    const alternativasContainer = document.getElementById('alternativas');
-    function mostraPergunta() {
+];
+
+let atual = 0;
+let pontuacao = 0; // Variável para armazenar a pontuação
+let perguntaAtual;
+const caixaPerguntas = document.getElementById('caixaPerguntas');
+const alternativasContainer = document.getElementById('alternativas');
+
+function mostraPergunta() {
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     alternativasContainer.innerHTML = '';
-    perguntaAtual.alternativas.forEach((alternativa, index) => {
-    const button = document.createElement('button');
-    button.textContent = alternativa;
-    button.addEventListener('click', () => {
-    atual++;
-    if (atual < perguntas.length) {
-    mostraPergunta();
-    } else {
-    caixaPerguntas.textContent = 'Você completou o seu dia!';
-    alternativasContainer.innerHTML = '';
-    }
+    perguntaAtual.alternativas.forEach((alternativa) => {
+        const button = document.createElement('button');
+        button.textContent = alternativa.texto;
+        button.addEventListener('click', () => {
+            pontuacao += alternativa.pontuacao; // Incrementa a pontuação com base na alternativa selecionada
+            atual++;
+            if (atual < perguntas.length) {
+                mostraPergunta();
+            } else {
+                exibePontuacaoFinal(); // Chama função para exibir a pontuação final
+            }
+        });
+        alternativasContainer.appendChild(button);
     });
-    alternativasContainer.appendChild(button);
-    });
-    }
-    mostraPergunta();
+}
+
+function exibePontuacaoFinal() {
+    caixaPerguntas.textContent = `Você completou o questionário! Sua pontuação final é: ${pontuacao}`;
+    alternativasContainer.innerHTML = ''; // Limpa as alternativas
+}
+
+mostraPergunta(); // Inicia o questionário mostrando a primeira pergunta
+
+
+
