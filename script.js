@@ -2,36 +2,36 @@ const perguntas = [
     {
         enunciado: "qual sua cor favorita?",
         alternativas: [
-            { texto: "azul cereja!", pontuacao: 1 },
-            { texto: "verde cachorrao!", pontuacao: 2 }
+            { texto: " azul!", pontuacao: 1 },
+            { texto: "verde!", pontuacao: 2 }
         ]
     },
     {
-        enunciado: "qual sua comida preferida?",
+        enunciado: "qual numero vc prefere?",
         alternativas: [
-            { texto: "pao peidao.", pontuacao: 2 },
-            { texto: "feijao diarreia.", pontuacao: 1 }
+            { texto: "12.", pontuacao: 2 },
+            { texto: "7.", pontuacao: 1 }
         ]
     },
     {
-        enunciado: "qual seu trabalho?",
+        enunciado: "qual sua fruta preferida?",
         alternativas: [
-            { texto: "rodar bolcinha.", pontuacao: 2 },
-            { texto: "dama de luxo.", pontuacao: 1 }
+            { texto: "maça.", pontuacao: 2 },
+            { texto: "laranja.", pontuacao: 1 }
         ]
     },
     {
-        enunciado: "E agora?",
+        enunciado: "qual?",
         alternativas: [
-            { texto: "boyceta.", pontuacao: 1 },
-            { texto: "ciss.", pontuacao: 2 }
+            { texto: "quimica.", pontuacao: 1 },
+            { texto: "fisica.", pontuacao: 2 }
         ]
     },
     {
-        enunciado: "vc defecou hoje?",
+        enunciado: "vc ama Jesus?",
         alternativas: [
-            { texto: "sim, duas vezes.", pontuacao: 1 },
-            { texto: "nao, apenas uma bufa.", pontuacao: 2 }
+            { texto: "sim muito.", pontuacao: 1 },
+            { texto: "sim muitao.", pontuacao: 2 }
         ]
     }
 ];
@@ -68,6 +68,3 @@ function exibePontuacaoFinal() {
 }
 
 mostraPergunta(); // Inicia o questionário mostrando a primeira pergunta
-
-
-
